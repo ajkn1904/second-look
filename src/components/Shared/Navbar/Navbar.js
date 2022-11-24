@@ -7,10 +7,11 @@ const Navbar = () => {
 
     const { user, userLogout } = useContext(AuthContext)
 
+    //handling logout system
     const handleLogOut = () => {
         userLogout()
-        .then(() => {})
-        .cath(error => console.log(error))
+            .then(() => { })
+            .cath(error => console.log(error))
     }
 
     const navMenu = <>
@@ -53,6 +54,9 @@ const Navbar = () => {
                 <ul className="menu menu-horizontal p-0">
                     {navMenu}
                 </ul>
+            </div>
+            <div className="navbar-end mx-auto 3 w-5/12">
+                <p className="text-xl font-serif">{user?.displayName}</p>
             </div>
 
         </div>

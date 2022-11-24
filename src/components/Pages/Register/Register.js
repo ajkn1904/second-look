@@ -1,11 +1,10 @@
-import { async } from '@firebase/util';
-import { warning } from 'daisyui/src/colors/colorNames';
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast, Toaster } from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import LoadingSpinner from '../../Shared/LoadingSpinner/LoadingSpinner';
 
 const Register = () => {
 
@@ -15,9 +14,12 @@ const Register = () => {
     const [registerError, setRegisterError] = useState('')
 
     const googleProvider = new GoogleAuthProvider();
+    const navigate = useNavigate()
+
+
 
     if (loading) {
-        return <p>loading..........</p>
+        return <LoadingSpinner></LoadingSpinner>
     }
 
 
@@ -37,7 +39,7 @@ const Register = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-
+                navigate('/')
             })
     }
     const handleProfile = (data) => {
