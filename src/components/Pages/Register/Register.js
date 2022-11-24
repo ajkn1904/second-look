@@ -1,5 +1,6 @@
 import { async } from '@firebase/util';
 import { warning } from 'daisyui/src/colors/colorNames';
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast, Toaster } from 'react-hot-toast';
@@ -13,29 +14,31 @@ const Register = () => {
     const { register, formState: { errors }, handleSubmit } = useForm()
     const [registerError, setRegisterError] = useState('')
 
+    const googleProvider = new GoogleAuthProvider();
+
     if (loading) {
         return <p>loading..........</p>
     }
 
 
     const storeUser = (name, email, role) => {
-        const user ={
+        const user = {
             name,
             email,
             role
         }
-        fetch('http://localhost:5000/users',{ 
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(user)
-    })
-    .then(res => res.json())
-    .then(data => {
-        console.log(data);
-        
-    })
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+
+            })
     }
     const handleProfile = (data) => {
         const userInfo = {
@@ -43,11 +46,10 @@ const Register = () => {
         }
 
         userProfileUpdate(userInfo)
-        .then(() => {
-            console.log(data.name, data.email, data.role)
-            storeUser(data.name, data.email, data.role)
-        })
-        .catch((error) => setRegisterError(error.message))
+            .then(() => {
+                storeUser(data.name, data.email, data.role)
+            })
+            .catch((error) => setRegisterError(error.message))
     }
 
 
@@ -72,6 +74,20 @@ const Register = () => {
     }
 
 
+
+
+    const handleGoogleLogin = () => {
+
+        continueWithProvider(googleProvider)
+            .then(res => {
+                const user = res.user
+                storeUser(user.displayName, user.email, 'Buyer')
+            })
+            .catch((error) => setRegisterError(error.message))
+    }
+
+
+
     return (
         <div className='flex justify-center items-center my-20 p-4'>
             <div className='card shadow-xl w-96 p-7'>
@@ -90,7 +106,7 @@ const Register = () => {
                         <span className="label-text">Select Account Type</span>
                     </label>
                     <select className="select select-bordered w-full max-w-xs"  {...register("role")} >
-                        <option value={'Normal User'}>Normal User</option>
+                        <option value={'Buyer'} default>Normal User</option>
                         <option value={'Seller'}>Seller</option>
                     </select>
 
@@ -150,7 +166,7 @@ const Register = () => {
 
                         <div className="divider">OR</div>
 
-                        <button className="w-full my-3 btn btn-outline btn-primary" type="submit">CONTINUE WITH GOOGLE</button>
+                        <button onClick={handleGoogleLogin} className="w-full my-3 btn btn-outline btn-primary" type="submit">CONTINUE WITH GOOGLE</button>
 
                     </div>
 
