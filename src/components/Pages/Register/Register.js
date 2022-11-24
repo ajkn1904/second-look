@@ -75,7 +75,7 @@ const Register = () => {
             .then(res => {
                 const user = res.user
                 console.log(user)
-                toast.success('Registration Successful')
+                toast.success("Registration Successful")
                 handleProfile(data)
             }
             )
@@ -92,6 +92,7 @@ const Register = () => {
         continueWithProvider(googleProvider)
             .then(res => {
                 const user = res.user
+                toast.success("Registration Successful")
                 storeUser(user.displayName, user.email, 'Buyer')
             })
             .catch((error) => setRegisterError(error.message))
@@ -101,6 +102,7 @@ const Register = () => {
 
     return (
         <div className='flex justify-center items-center my-20 p-4'>
+            <Toaster></Toaster>
             <div className='card shadow-xl w-96 p-7'>
                 <h1 className='text-xl font-bold text-center my-10'>Register Now</h1>
 
@@ -184,7 +186,7 @@ const Register = () => {
                 </form>
 
             </div>
-            <Toaster></Toaster>
+            
         </div>
     );
 };
