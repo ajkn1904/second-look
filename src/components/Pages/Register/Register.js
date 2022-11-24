@@ -1,9 +1,10 @@
 import { GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast, Toaster } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import useToken from '../../Hooks/useToken/useToken';
 import LoadingSpinner from '../../Shared/LoadingSpinner/LoadingSpinner';
 
 const Register = () => {
@@ -15,7 +16,14 @@ const Register = () => {
 
     const googleProvider = new GoogleAuthProvider();
     const navigate = useNavigate()
+    const [createdUserEmail, setCreatedUserEmail] = useState('')
+    const [token] = useToken(createdUserEmail)
 
+ /*    useEffect(() => {
+        if (token) {
+            navigate('/')
+        }
+    },[token, navigate]) */
 
 
     if (loading) {
@@ -40,6 +48,7 @@ const Register = () => {
             .then(data => {
                 console.log(data);
                 navigate('/')
+                setCreatedUserEmail(email);
             })
     }
     const handleProfile = (data) => {

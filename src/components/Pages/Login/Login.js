@@ -1,9 +1,10 @@
 import { GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Toaster } from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import useToken from '../../Hooks/useToken/useToken';
 import LoadingSpinner from '../../Shared/LoadingSpinner/LoadingSpinner';
 
 const Login = () => {
@@ -15,6 +16,17 @@ const Login = () => {
     const location = useLocation()
     const navigate = useNavigate()
     const from = location.state?.from?.pathName || '/'
+    const [loginUserEmail, setLoginUserEmail] = useState('')
+    const [token] = useToken(loginUserEmail)
+
+    
+
+ /*    useEffect(() => {
+        if(token){
+            navigate(from, {replace:true})
+        }
+    },[token, from, navigate]) */
+
 
 
     if (loading) {
@@ -27,7 +39,9 @@ const Login = () => {
             const user = res.user
             console.log(user);
             setLoginError('')
-            navigate(from, {replace: true})
+            navigate(from, {replace:true})
+            setLoginUserEmail(data.email)
+            
             })
             .catch(error => setLoginError(error.message))
     }
@@ -38,7 +52,8 @@ const Login = () => {
         .then(res => {
             const user = res.user;
             console.log(user);
-            navigate(from, {replace: true})
+            navigate(from, {replace:true})
+            setLoginUserEmail(user.email)
         })
         .catch(error => setLoginError(error.message))
     }
