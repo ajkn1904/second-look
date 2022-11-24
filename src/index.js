@@ -4,13 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AuthProvider from './components/Contexts/AuthProvider';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient()
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AuthProvider>      {/* Provides auth context to the child components */}
-      <App />
-    </AuthProvider>
+    <QueryClientProvider client={queryClient}>      {/* for using react query in the child components  */}
+      <AuthProvider>      {/* Provides auth context to the child components */}
+        <App />
+      </AuthProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );
 
