@@ -1,19 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../logo.svg'
+import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Navbar = () => {
-    
+
+    const { user } = useContext(AuthContext)
+
 
     const navMenu = <>
-        
+
         <li><Link to='/' className='btn btn-ghost rounded font-semibold'>Home</Link></li>
         <li><Link to='/blog' className='btn btn-ghost rounded font-semibold'>Blog</Link></li>
-        <li><Link to='/dashboard' className='btn btn-ghost rounded font-semibold'>Dashboard</Link></li>
-        <li><Link to='/login' className='btn btn-ghost rounded font-semibold'>Login</Link></li>
-        <li><Link to='/register' className='btn btn-ghost rounded font-semibold'>Register</Link></li>
-        <li><Link to='/' className='btn btn-ghost rounded font-semibold'>Logout</Link></li>
-        
+        {
+            // conditional rendering
+            user?.uid ?
+                <>
+                    <li><Link to='/dashboard' className='btn btn-ghost rounded font-semibold'>Dashboard</Link></li>
+                    <li><Link to='/' className='btn btn-ghost rounded font-semibold'>Logout</Link></li>
+                </>
+                :
+                <>
+                    <li><Link to='/login' className='btn btn-ghost rounded font-semibold'>Login</Link></li>
+                    <li><Link to='/register' className='btn btn-ghost rounded font-semibold'>Register</Link></li>
+                </>
+        }
+
     </>
 
 
@@ -34,7 +46,7 @@ const Navbar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
-                {navMenu}
+                    {navMenu}
                 </ul>
             </div>
 
