@@ -22,7 +22,7 @@ const MyOrders = () => {
             return data
         }
     })
-    console.log(data)
+   // console.log(data)
 
     if (loading || isLoading) {
         return <LoadingSpinner></LoadingSpinner>
