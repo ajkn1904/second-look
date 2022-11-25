@@ -102,7 +102,7 @@ const AddAProduct = () => {
                         <label className="label">
                             <span className="label-text">Select Category</span>
                         </label>
-                        <select className="select select-bordered w-full max-w-xs"  {...register("cat_id")} >
+                        <select className="select select-bordered w-full"  {...register("cat_id")} >
                             {
                                 category.map(item =>
 
