@@ -13,7 +13,10 @@ import Products from '../../Pages/Home/Category/Products/Products';
 import Home from '../../Pages/Home/Home';
 import Login from '../../Pages/Login/Login';
 import Register from '../../Pages/Register/Register';
+import AdminRoute from '../AdminRoute/AdminRoute';
+import BuyerRoute from '../BuyerRoute/BuyerRoute';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import SellerRoute from '../SellerRoute/SellerRoute';
 
 const router = createBrowserRouter([
     {
@@ -48,27 +51,27 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/dashboard/myOrders',
-                element: <MyOrders></MyOrders>
+                element: <BuyerRoute><MyOrders></MyOrders></BuyerRoute>
             },
             {
                 path: '/dashboard/addProduct',
-                element: <AddAProduct></AddAProduct>
+                element: <SellerRoute><AddAProduct></AddAProduct></SellerRoute>
             },
             {
                 path: '/dashboard/myProducts',
-                element: <MyProducts></MyProducts>
+                element: <SellerRoute><MyProducts></MyProducts></SellerRoute>
             },
             {
                 path: '/dashboard/allSellers',
-                element: <AllSellers></AllSellers>
+                element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
             },
             {
                 path: '/dashboard/allBuyers',
-                element: <AllBuyers></AllBuyers>
+                element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
             },
             {
                 path: '/dashboard/reportedItem',
-                element: <ReportedItem></ReportedItem>
+                element: <AdminRoute><ReportedItem></ReportedItem></AdminRoute>
             }
         ]
     },
