@@ -19,11 +19,11 @@ const Register = () => {
     const [createdUserEmail, setCreatedUserEmail] = useState('')
     const [token] = useToken(createdUserEmail)
 
- /*    useEffect(() => {
+    useEffect(() => {
         if (token) {
             navigate('/')
         }
-    },[token, navigate]) */
+    },[token, navigate])
 
 
     if (loading) {
@@ -47,7 +47,7 @@ const Register = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                navigate('/')
+                //navigate('/')
                 setCreatedUserEmail(email);
             })
     }

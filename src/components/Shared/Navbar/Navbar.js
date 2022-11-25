@@ -16,19 +16,19 @@ const Navbar = () => {
 
     const navMenu = <>
 
-        <li><Link to='/' className='btn btn-ghost rounded font-semibold'>Home</Link></li>
-        <li><Link to='/blog' className='btn btn-ghost rounded font-semibold'>Blog</Link></li>
+        <li><Link to='/' className='btn btn-ghost rounded font-semibold'>HOME</Link></li>
+        <li><Link to='/blog' className='btn btn-ghost rounded font-semibold'>BLOG</Link></li>
         {
             // conditional rendering
             user?.uid ?
                 <>
-                    <li><Link to='/dashboard' className='btn btn-ghost rounded font-semibold'>Dashboard</Link></li>
-                    <li><Link to='/' className='btn btn-ghost rounded font-semibold' onClick={handleLogOut}>Logout</Link></li>
+                    <li><Link to='/dashboard' className='btn btn-ghost rounded font-semibold'>DASHBOARD</Link></li>
+                    <li><Link to='/' className='btn btn-ghost rounded font-semibold' onClick={handleLogOut}>LOGOUT</Link></li>
                 </>
                 :
                 <>
-                    <li><Link to='/login' className='btn btn-ghost rounded font-semibold'>Login</Link></li>
-                    <li><Link to='/register' className='btn btn-ghost rounded font-semibold'>Register</Link></li>
+                    <li><Link to='/login' className='btn btn-ghost rounded font-semibold'>LOGIN</Link></li>
+                    <li><Link to='/register' className='btn btn-ghost rounded font-semibold'>REGISTER</Link></li>
                 </>
         }
 

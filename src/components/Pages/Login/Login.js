@@ -21,11 +21,11 @@ const Login = () => {
 
     
 
- /*    useEffect(() => {
+    useEffect(() => {
         if(token){
             navigate(from, {replace:true})
         }
-    },[token, from, navigate]) */
+    },[token, from, navigate])
 
 
 
@@ -39,7 +39,7 @@ const Login = () => {
             const user = res.user
             console.log(user);
             setLoginError('')
-            navigate(from, {replace:true})
+            //navigate(from, {replace:true})
             setLoginUserEmail(data.email)
             
             })
@@ -52,7 +52,7 @@ const Login = () => {
         .then(res => {
             const user = res.user;
             console.log(user);
-            navigate(from, {replace:true})
+            //navigate(from, {replace:true})
             setLoginUserEmail(user.email)
         })
         .catch(error => setLoginError(error.message))
