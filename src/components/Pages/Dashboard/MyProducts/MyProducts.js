@@ -10,28 +10,46 @@ const MyProducts = () => {
 
     const handleDelete = (id) => {
         const doDelete = window.confirm('Do you want to delete this product?');
-        if(doDelete){
-            fetch(`http://localhost:5000/products/${id}`, {
+        if (doDelete) {
+            fetch(`http://localhost:5000/seller/products/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
             })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if(data.deletedCount === 1){
-                   toast.error("Deleted Successfully")
-                   refetch()
-                }
-            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.deletedCount === 1) {
+                        toast.error("Deleted Successfully")
+                        refetch()
+                    }
+                })
         }
     }
 
 
+    const handleAdvertise = id => {
+        fetch(`http://localhost:5000/seller/products/${id}`, {
+            method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount > 0) {
+                    toast.success('Added for advertisement successful')
+                    refetch()
+                }
+            })
+    }
 
-    const url = `http://localhost:5000/products?email=${user?.email}`
-    const { data = [], isLoading, refetch} = useQuery({
+
+
+    const url = `http://localhost:5000/sellers/products?email=${user?.email}`
+    const { data = [], isLoading, refetch } = useQuery({
         queryKey: ['products', user?.email],
         queryFn: async () => {
             const res = await fetch(url, {
@@ -47,6 +65,8 @@ const MyProducts = () => {
     if (loading || isLoading) {
         return <LoadingSpinner></LoadingSpinner>
     }
+
+
 
     return (
         <div className='p-5 sm:p-5 md:p-8 lg:p-14 my-5'>
@@ -76,23 +96,33 @@ const MyProducts = () => {
                                     <div className="w-16 rounded">
                                         <img src={item.image} alt="" />
                                     </div>
-                                    </td>
-                                    <td className='w-3'>{item.name}</td>
-                                    <td>${item.originalPrice}</td>
-                                    <td>${item.resalePrice}</td>
-                                    <td className='font-semibold uppercase bg-green-100'>{item.status}</td>
-                                    <td><button className='btn btn-warning btn-sm'>Advertise</button></td>
-                                    <td><button className='btn btn-error btn-sm' onClick={() => handleDelete(item._id)}>Delete</button></td>
+                                </td>
+                                <td className='w-3'>{item.name}</td>
+                                <td>${item.originalPrice}</td>
+                                <td>${item.resalePrice}</td>
+                                <td className='font-semibold uppercase bg-green-100'>{item.status}</td>
+                                <td>
+                                    {(item.status === 'available') &&
+                                        <button className='btn btn-warning btn-sm' onClick={() => handleAdvertise(item._id)}>
+                                            {(item?.advertise !== true) ? 
+                                                'Advertise'
+                                                :
+                                                'Advertising'
+                                            }
+                                        </button>
+                                    }
+                                </td>
+                                <td><button className='btn btn-error btn-sm' onClick={() => handleDelete(item._id)}>Delete</button></td>
                             </tr>
 
                             )
                         }
                     </tbody>
                 </table>
-            <Toaster></Toaster>
+                <Toaster></Toaster>
             </div>
 
-            
+
         </div>
     );
 };
