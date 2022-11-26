@@ -24,22 +24,40 @@ const AllSellers = () => {
 
     const handleDelete = (id) => {
         const doDelete = window.confirm('Do you want to delete this seller?');
-        if(doDelete){
+        if (doDelete) {
             fetch(`http://localhost:5000/sellers/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }
             })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                if(data.deletedCount === 1){
-                    setReFetch(!reFetch)
-                   toast.error("Deleted Successfully")
-                }
-            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.deletedCount === 1) {
+                        setReFetch(!reFetch)
+                        toast.error("Deleted Successfully")
+                    }
+                })
         }
+    }
+
+    const handleVerify = id => {
+        fetch(`http://localhost:5000/users/admin/${id}`, {
+            method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if(data.modifiedCount>0){
+                setReFetch(!reFetch)
+                toast.success('Verification successful')
+            }
+
+        })
     }
 
 
@@ -54,6 +72,7 @@ const AllSellers = () => {
                             <th></th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Verify Seller</th>
                             <th>Make Admin</th>
                             <th>Delete</th>
 
@@ -66,7 +85,12 @@ const AllSellers = () => {
                                 <th>{[i + 1]}</th>
                                 <td>{seller.name}</td>
                                 <td>{seller.email}</td>
-                                <td><button className='btn btn-warning btn-sm'>Verify</button></td>
+                                <td>
+                                    {/* making the button invisible when the seller is verified */}
+                                    {(seller?.verification !== true) &&
+                                        <button className='btn btn-warning btn-sm' onClick={() => handleVerify(seller._id)}>Verify</button>
+                                    }
+                                </td>
                                 <td><button className='btn btn-success btn-sm'>Make Admin</button></td>
                                 <td><button className='btn btn-error btn-sm' onClick={() => handleDelete(seller._id)}>Delete</button></td>
                             </tr>
@@ -75,7 +99,7 @@ const AllSellers = () => {
                         }
                     </tbody>
                 </table>
-                
+
             </div>
             <Toaster></Toaster>
         </div>

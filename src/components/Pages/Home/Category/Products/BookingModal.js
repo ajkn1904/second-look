@@ -1,13 +1,13 @@
-import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { AuthContext } from '../../../../Contexts/AuthProvider';
 
+
 const BookingModal = ({ booking }) => {
-    console.log(booking)
+
     const { user } = useContext(AuthContext)
     const [bookingData, setBookingData] = useState([])
-    //const [loading, setLoading] = useState(true)
+
 
     useEffect(() => {
         fetch(`http://localhost:5000/product/${booking}`)
@@ -18,18 +18,6 @@ const BookingModal = ({ booking }) => {
             })
     }, [booking])
 
-    /*     const { data:bookingData = [], isLoading } = useQuery({
-            queryKey: ['booking'],
-            queryFn: async () => {
-                const res = await fetch(`http://localhost:5000/product/${booking}`);
-                const data = await res.json();
-                return data;
-            }
-        }) */
-
-    /*     if(loading){
-            return <LoadingSpinner></LoadingSpinner>
-        } */
 
     const handleSubmit = (e) => {
         e.preventDefault()
