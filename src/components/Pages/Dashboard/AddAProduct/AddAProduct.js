@@ -116,9 +116,10 @@ const AddAProduct = () => {
                         <label className="label">
                             <span className="label-text">Book's image</span>
                         </label>
-                        <input type="file" className="w-full my-3 input input-bordered"  {...register("image", {
+                        <input type="file" className="file-input file-input-bordered w-full" {...register("image", {
                             required: 'Photo is required'
-                        })} />
+                        })}/>
+                        
 
                         {errors.image && <p className='text-error'>{errors.image?.message}</p>}
 

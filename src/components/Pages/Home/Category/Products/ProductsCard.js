@@ -21,7 +21,7 @@ const ProductsCard = ({ item, handleBooking, refetch }) => {
     const handleReport = id => {
         const doReport = window.confirm('Do you want to report this product?');
         if (doReport) {
-            fetch(`http://localhost:5000/product/${id}`, {
+            fetch(`https://second-look-server.vercel.app/product/${id}`, {
                 method: 'PUT'
             })
                 .then(res => res.json())

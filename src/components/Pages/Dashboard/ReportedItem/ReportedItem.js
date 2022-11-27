@@ -9,7 +9,7 @@ const ReportedItem = () => {
         console.log(id)
         const doDelete = window.confirm('Do you want to delete this product?');
         if (doDelete) {
-            fetch(`http://localhost:5000/admin/products/${id}`, {
+            fetch(`https://second-look-server.vercel.app/admin/products/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -28,7 +28,7 @@ const ReportedItem = () => {
 
 
     const handleReportDecline = id => {
-        fetch(`http://localhost:5000/admin/product/${id}`, {
+        fetch(`https://second-look-server.vercel.app/admin/product/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -50,7 +50,7 @@ const ReportedItem = () => {
     const { data = [], isLoading, refetch } = useQuery({
         queryKey: ['reportedProducts'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/reportedProducts')
+            const res = await fetch('https://second-look-server.vercel.app/reportedProducts')
             const data = await res.json()
             return data
         }
@@ -72,7 +72,7 @@ const ReportedItem = () => {
                     <thead>
                         <tr>
                             <th></th>
-                            <th>Image</th>
+                            <th>Item's Image</th>
                             <th>Item's Title</th>
                             <th>Seller's Email</th>
                             <th>Decline</th>

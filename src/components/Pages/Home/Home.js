@@ -3,6 +3,7 @@ import React from 'react';
 import LoadingSpinner from '../../Shared/LoadingSpinner/LoadingSpinner';
 import AdvertisedItems from './AdvertisedItems/AdvertisedItems';
 import Category from './Category/Category';
+import MostRecent from './MostRecent/MostRecent';
 
 const Home = () => {
 
@@ -39,6 +40,11 @@ const Home = () => {
                 (data.length > 0) &&
                 <AdvertisedItems ket={data._id} data={data}></AdvertisedItems>
             }
+
+
+            <div className='my-16'>
+                <MostRecent></MostRecent>
+            </div>
 
         </div>
     );
