@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import LoadingSpinner from '../../../../Shared/LoadingSpinner/LoadingSpinner';
+
 
 const ProductsCard = ({ item, handleBooking }) => {
 
     const [sellerInfo, setSellerInfo] = useState({})
-    const [loading, setLoading] = useState(true)
 
     
     useEffect(() => {
@@ -12,14 +11,9 @@ const ProductsCard = ({ item, handleBooking }) => {
             .then(res => res.json())
             .then(data => {
                 setSellerInfo(data)
-                setLoading(false)
             })
     }, [item.sellerEmail])
 
-
-    if(loading){
-        return <LoadingSpinner></LoadingSpinner>
-    }
 
 
 
