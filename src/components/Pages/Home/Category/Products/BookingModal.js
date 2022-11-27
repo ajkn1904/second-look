@@ -3,7 +3,7 @@ import { toast } from 'react-hot-toast';
 import { AuthContext } from '../../../../Contexts/AuthProvider';
 
 
-const BookingModal = ({ booking }) => {
+const BookingModal = ({ booking, setBooking, refetch }) => {
 
     const { user } = useContext(AuthContext)
     const [bookingData, setBookingData] = useState([])
@@ -13,7 +13,7 @@ const BookingModal = ({ booking }) => {
         fetch(`http://localhost:5000/product/${booking}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                //console.log(data)
                 setBookingData(data)
             })
     }, [booking])
@@ -37,7 +37,7 @@ const BookingModal = ({ booking }) => {
             userName, userEmail, userPhoneNumber, userLocation, itemName, img, price
         }
 
-        console.log(order)
+        //console.log(order)
 
         fetch('http://localhost:5000/orders', {
             method: 'POST',
@@ -50,8 +50,9 @@ const BookingModal = ({ booking }) => {
             .then(data => {
                 console.log(data)
                 if (data.acknowledged) {
-
+                    setBooking(null)
                     toast.success('Booking Successful')
+                    refetch()
 
                 }
                 else {
@@ -71,10 +72,10 @@ const BookingModal = ({ booking }) => {
 
                     <form onSubmit={handleSubmit} className='flex flex-col justify-center gap-5 my-10'>
 
-                        <input type="text" name='userName' placeholder="Type here" value={user.displayName} className="input input-bordered w-full" disabled />
+                        <input type="text" name='userName' placeholder="Name" value={user.displayName} className="input input-bordered w-full" disabled />
 
-                        <input type="text" name='userEmail' defaultValue={user.email} placeholder="Full Name" className="input input-bordered w-full" disabled />
-                        <input type="text" name='price' defaultValue={bookingData.resalePrice} placeholder="Phone Number" className="input input-bordered w-full" disabled />
+                        <input type="text" name='userEmail' defaultValue={user.email} placeholder="Email" className="input input-bordered w-full" disabled />
+                        <input type="text" name='price' defaultValue={ bookingData.resalePrice} placeholder="Price" className="input input-bordered w-full" disabled />
                         <input type="text" name='userPhoneNumber' placeholder="Phone Number" className="input input-bordered w-full" required />
                         <input type="text" name='userLocation' placeholder="Your Location" className="input input-bordered w-full" required />
 

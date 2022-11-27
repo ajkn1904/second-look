@@ -2,6 +2,7 @@ import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import DashboardLayout from '../../Layout/Dashboard/DashboardLayout';
 import Main from '../../Layout/Main';
+import NotFoundPage from '../../Pages/404Page/NotFoundPage';
 import Blog from '../../Pages/Blog/Blog';
 import AddAProduct from '../../Pages/Dashboard/AddAProduct/AddAProduct';
 import AllBuyers from '../../Pages/Dashboard/AllBuyers/AllBuyers';
@@ -21,33 +22,37 @@ import SellerRoute from '../SellerRoute/SellerRoute';
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <Main/>,
+        element: <Main />,
         children: [
             {
                 path: '/',
-                element: <Home/>
+                element: <Home />
             },
             {
                 path: '/category/:id',
-                element:<PrivateRoute><Products></Products></PrivateRoute> 
+                element: <PrivateRoute><Products></Products></PrivateRoute>
             },
             {
                 path: '/blog',
-                element: <Blog/>
+                element: <Blog />
             },
             {
                 path: '/login',
-                element: <Login/>
+                element: <Login />
             },
             {
                 path: '/register',
-                element: <Register/>
+                element: <Register />
             },
+            {
+                path: '*',
+                element: <NotFoundPage />
+            }
         ]
     },
     {
         path: '/dashboard',
-        element: <PrivateRoute><DashboardLayout/></PrivateRoute>,
+        element: <PrivateRoute><DashboardLayout /></PrivateRoute>,
         children: [
             {
                 path: '/dashboard/myOrders',
@@ -72,6 +77,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/reportedItem',
                 element: <AdminRoute><ReportedItem></ReportedItem></AdminRoute>
+            },
+            {
+                path: '/dashboard/*',
+                element: <NotFoundPage />
             }
         ]
     },

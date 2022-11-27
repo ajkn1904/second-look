@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
-import { toast } from 'react-hot-toast';
+import { toast, Toaster } from 'react-hot-toast';
 
 const AllBuyers = () => {
     const [data, setData] = useState([]);
@@ -13,13 +13,11 @@ const AllBuyers = () => {
             .then(res => {
                 const buyers = res.data;
                 setData(buyers)
-                //console.log(buyers)
             })
             .catch(error => console.log(error));
     }, [reFetch]);
 
 
-    //console.log(data)
 
     const handleDelete = (id) => {
         const doDelete = window.confirm('Do you want to delete this buyer?');
@@ -73,8 +71,8 @@ const AllBuyers = () => {
                         }
                     </tbody>
                 </table>
-
             </div>
+            <Toaster></Toaster>
         </div>
     );
 

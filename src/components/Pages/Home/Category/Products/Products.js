@@ -9,11 +9,11 @@ import ProductsCard from './ProductsCard';
 
 const Products = () => {
     let { id } = useParams();
-    const [booking, setBooking] = useState('')
+    const [booking, setBooking] = useState(null)
 
     const { loading } = useContext(AuthContext)
 
-    const { data = [], isLoading } = useQuery({
+    const { data = [], isLoading, refetch } = useQuery({
         queryKey: ['product'],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/category/${id}`);
@@ -37,8 +37,8 @@ const Products = () => {
             {data &&
                 data?.map(item => <ProductsCard key={item._id} item={item} handleBooking={handleBooking}></ProductsCard>)
             }
-            {
-                <BookingModal booking={booking}></BookingModal>
+            { booking &&
+                <BookingModal setBooking={setBooking} refetch={refetch} booking={booking}></BookingModal>
             }
             <Toaster></Toaster>
         </div>

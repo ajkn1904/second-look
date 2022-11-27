@@ -34,11 +34,11 @@ const ProductsCard = ({ item, handleBooking }) => {
                 <p>Resale Price: <strong>${item.resalePrice}</strong></p>
                 <p>Location:  <strong>{item.location}</strong></p>
                 <p>Used For: <strong>{item.used}</strong></p>
-                <div className='flex'>
-                    <p>Seller: <strong>{item.sellerName}</strong></p>
+                <div className='flex gap-4'>
+                    <span>Seller: <strong>{item.sellerName}</strong></span>
                     {
                         (sellerInfo.verification) &&
-                        <input type="checkbox" checked readOnly />
+                        <input className='w-4 rounded-full' type="checkbox" checked readOnly />
                     }
                 </div>
                 <small>Posted on: {item.postingTime}</small>

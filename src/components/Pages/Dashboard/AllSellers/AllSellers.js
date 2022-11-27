@@ -49,15 +49,15 @@ const AllSellers = () => {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            if(data.modifiedCount>0){
-                setReFetch(!reFetch)
-                toast.success('Verification successful')
-            }
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount > 0) {
+                    setReFetch(!reFetch)
+                    toast.success('Verification successful')
+                }
 
-        })
+            })
     }
 
 
@@ -99,7 +99,6 @@ const AllSellers = () => {
                         }
                     </tbody>
                 </table>
-
             </div>
             <Toaster></Toaster>
         </div>
