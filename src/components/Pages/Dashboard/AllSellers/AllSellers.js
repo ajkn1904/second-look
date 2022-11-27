@@ -13,7 +13,7 @@ const AllSellers = () => {
 
     //using axios to get data from api
     const getSellers = () => {
-        axios.get('http://localhost:5000/sellers')
+        axios.get('https://second-look-server.vercel.app/sellers')
             .then(res => {
                 const sellers = res.data;
                 setData(sellers)
@@ -25,7 +25,7 @@ const AllSellers = () => {
     const handleDelete = (id) => {
         const doDelete = window.confirm('Do you want to delete this seller?');
         if (doDelete) {
-            fetch(`http://localhost:5000/sellers/${id}`, {
+            fetch(`https://second-look-server.vercel.app/sellers/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -43,7 +43,7 @@ const AllSellers = () => {
     }
 
     const handleVerify = id => {
-        fetch(`http://localhost:5000/users/admin/${id}`, {
+        fetch(`https://second-look-server.vercel.app/users/admin/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

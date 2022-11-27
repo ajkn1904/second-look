@@ -10,7 +10,7 @@ const BookingModal = ({ booking, setBooking, refetch }) => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/product/${booking}`)
+        fetch(`https://second-look-server.vercel.app/product/${booking}`)
             .then(res => res.json())
             .then(data => {
                 //console.log(data)
@@ -39,7 +39,7 @@ const BookingModal = ({ booking, setBooking, refetch }) => {
 
         //console.log(order)
 
-        fetch('http://localhost:5000/orders', {
+        fetch('https://second-look-server.vercel.app/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

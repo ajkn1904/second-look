@@ -8,7 +8,7 @@ const ProductsCard = ({ item, handleBooking }) => {
 
     
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${item.sellerEmail}`)
+        fetch(`https://second-look-server.vercel.app/users/${item.sellerEmail}`)
             .then(res => res.json())
             .then(data => {
                 setSellerInfo(data)

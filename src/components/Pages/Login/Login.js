@@ -1,7 +1,6 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Toaster } from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import useToken from '../../Hooks/useToken/useToken';
@@ -39,7 +38,6 @@ const Login = () => {
             const user = res.user
             console.log(user);
             setLoginError('')
-            //navigate(from, {replace:true})
             setLoginUserEmail(data.email)
             
             })
@@ -52,7 +50,6 @@ const Login = () => {
         .then(res => {
             const user = res.user;
             console.log(user);
-            //navigate(from, {replace:true})
             setLoginUserEmail(user.email)
         })
         .catch(error => setLoginError(error.message))

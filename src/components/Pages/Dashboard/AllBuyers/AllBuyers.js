@@ -9,7 +9,7 @@ const AllBuyers = () => {
 
     //using axios to get data from api
     useEffect(() => {
-        axios.get('http://localhost:5000/buyers')
+        axios.get('https://second-look-server.vercel.app/buyers')
             .then(res => {
                 const buyers = res.data;
                 setData(buyers)
@@ -22,7 +22,7 @@ const AllBuyers = () => {
     const handleDelete = (id) => {
         const doDelete = window.confirm('Do you want to delete this buyer?');
         if (doDelete) {
-            fetch(`http://localhost:5000/buyers/${id}`, {
+            fetch(`https://second-look-server.vercel.app/buyers/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`

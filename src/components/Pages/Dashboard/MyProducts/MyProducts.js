@@ -11,7 +11,7 @@ const MyProducts = () => {
     const handleDelete = (id) => {
         const doDelete = window.confirm('Do you want to delete this product?');
         if (doDelete) {
-            fetch(`http://localhost:5000/seller/products/${id}`, {
+            fetch(`https://second-look-server.vercel.app/seller/products/${id}`, {
                 method: 'DELETE',
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -30,7 +30,7 @@ const MyProducts = () => {
 
 
     const handleAdvertise = id => {
-        fetch(`http://localhost:5000/seller/products/${id}`, {
+        fetch(`https://second-look-server.vercel.app/seller/products/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -48,7 +48,7 @@ const MyProducts = () => {
 
 
 
-    const url = `http://localhost:5000/sellers/products?email=${user?.email}`
+    const url = `https://second-look-server.vercel.app/sellers/products?email=${user?.email}`
     const { data = [], isLoading, refetch } = useQuery({
         queryKey: ['products', user?.email],
         queryFn: async () => {

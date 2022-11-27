@@ -6,7 +6,7 @@ const useSeller = (email) => {
 
     useEffect(() => {
         if(email){
-            fetch(`http://localhost:5000/users/sellers/${email}`)
+            fetch(`https://second-look-server.vercel.app/users/sellers/${email}`)
             .then(res => res.json())
             .then(data => {
                 setIsSeller(data.isSeller)

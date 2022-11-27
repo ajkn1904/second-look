@@ -19,7 +19,7 @@ const AddAProduct = () => {
     const { data: category = [], isLoading } = useQuery({
         queryKey: ['category'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/category')
+            const res = await fetch('https://second-look-server.vercel.app/category')
             const data = res.json()
             return data
         }
@@ -63,7 +63,7 @@ const AddAProduct = () => {
                         status: 'available',
                     }
                     //console.log(product)
-                    fetch('http://localhost:5000/product', {
+                    fetch('https://second-look-server.vercel.app/product', {
                         method: 'POST',
                         headers: {
                             "content-type": "application/json",
@@ -195,6 +195,7 @@ const AddAProduct = () => {
                     </form>
                     
                 </div>
+                <Toaster></Toaster>
 
             </div>
 
