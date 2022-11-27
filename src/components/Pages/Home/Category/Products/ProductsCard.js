@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 
 
-const ProductsCard = ({ item, handleBooking }) => {
+const ProductsCard = ({ item, handleBooking, refetch }) => {
 
     const [sellerInfo, setSellerInfo] = useState({})
 
-    
+
     useEffect(() => {
         fetch(`https://second-look-server.vercel.app/users/${item.sellerEmail}`)
             .then(res => res.json())
@@ -13,6 +14,26 @@ const ProductsCard = ({ item, handleBooking }) => {
                 setSellerInfo(data)
             })
     }, [item.sellerEmail])
+
+
+
+
+    const handleReport = id => {
+        const doReport = window.confirm('Do you want to report this product?');
+        if (doReport) {
+            fetch(`http://localhost:5000/product/${id}`, {
+                method: 'PUT'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.modifiedCount > 0) {
+                       toast("Reported Successfully")
+                        refetch()
+                    }
+                })
+        }
+    }
 
 
 
@@ -37,8 +58,19 @@ const ProductsCard = ({ item, handleBooking }) => {
                 </div>
                 <small>Posted on: {item.postingTime}</small>
 
-                <div className="card-actions justify-end">
+                <div className="card-actions justify-between items-center">
+
+
                     <label className='btn btn-primary bg-gradient-to-r from-primary to-secondary hover:from-blue-400 text-white' htmlFor="booking-modal" onClick={() => handleBooking(item._id)}>Book Now</label>
+
+                    <button className='btn btn-xs btn-ghost text-error' onClick={() => handleReport(item._id)}>
+                        {item.reported === true ?
+                            'Reported'
+                            :
+                            'Report to admin'
+                        }
+                    </button>
+
                 </div>
             </div>
         </div>

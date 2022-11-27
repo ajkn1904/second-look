@@ -33,9 +33,9 @@ const Products = () => {
     }
 
     return (
-        <div className='grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-12 sm:gap-12 md:gp-9 lg:gap-9 my-8'>
+        <div className='grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-12 sm:gap-12 md:gp-9 lg:gap-9 my-24'>
             {data &&
-                data?.map(item => <ProductsCard key={item._id} item={item} handleBooking={handleBooking}></ProductsCard>)
+                data?.map(item => <ProductsCard key={item._id} item={item} handleBooking={handleBooking} refetch={refetch}></ProductsCard>)
             }
             { booking &&
                 <BookingModal setBooking={setBooking} refetch={refetch} booking={booking}></BookingModal>
