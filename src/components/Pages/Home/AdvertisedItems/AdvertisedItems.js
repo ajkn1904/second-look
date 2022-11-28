@@ -9,10 +9,10 @@ const AdvertisedItems = ({ data }) => {
 
                 {
                     data.map(item => 
-                        <>
+                        <div key={item._id}>
                         {item.advertise === true &&
 
-                        <div key={item._id} className="carousel-item">
+                        <div className="carousel-item">
                             <div className="indicator">
                                 <span className="indicator-item indicator-top indicator-end badge badge-warning font-semibold italic p-4 text-xl">${item.resalePrice}</span>
                                 <img src={item.image} className="rounded-box" alt="" style={{ height: '400px', width: '260px' }} />
@@ -21,7 +21,7 @@ const AdvertisedItems = ({ data }) => {
 
                         </div>
                     }
-                    </>
+                    </div>
                     )
                 }
 

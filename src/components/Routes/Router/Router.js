@@ -59,6 +59,10 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
+                path: '/dashboard',
+                element: <p className='text-5xl font-bold text-info text-center my-[30vh]'>WELCOME TO DASHBOARD</p>
+            },
+            {
                 path: '/dashboard/myOrders',
                 element: <BuyerRoute><MyOrders></MyOrders></BuyerRoute>
             },
