@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import LoadingSpinner from '../../../Shared/LoadingSpinner/LoadingSpinner';
 
@@ -22,7 +23,7 @@ const MyOrders = () => {
             return data
         }
     })
-   // console.log(data)
+    // console.log(data)
 
     if (loading || isLoading) {
         return <LoadingSpinner></LoadingSpinner>
@@ -54,11 +55,22 @@ const MyOrders = () => {
                                     <div className="w-20 rounded">
                                         <img src={order.img} alt="" />
                                     </div>
-                                    </td>
-                                    <td>{order.itemName}</td>
-                                    <td>{order.userEmail}</td>
-                                    <td>${order.price}</td>
-                                    <td><button className='btn btn-success'>Pay</button></td>
+                                </td>
+                                <td>{order.itemName}</td>
+                                <td>{order.userEmail}</td>
+                                <td>${order.price}</td>
+                                <td>
+                                    {
+                                        (order.price && order.paid !== true) &&
+                                        <Link to={`/dashboard/payment/${order._id}`}>
+                                        <button className='btn btn-primary'>Pay</button>
+                                        </Link>
+                                    }
+                                    {
+                                        (order.price && order.paid === true) &&
+                                        <button className='btn btn-success' disabled>Paid</button>
+                                    }
+                                </td>
                             </tr>
 
                             )

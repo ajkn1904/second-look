@@ -24,7 +24,7 @@ const Home = () => {
     return (
         <div>
             <section className="hero h-[400px]" style={{ backgroundImage: `url('https://i.ibb.co/yspT48x/shiromani-kant-mo3-FOTG62ao-unsplash.jpg')` }}>
-                <div className="hero-overlay bg-opacity-60"></div>
+                <div className="hero-overlay bg-opacity-70"></div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-lg">
                         <h1 className="mb-5 text-5xl font-bold font-serif border-2 px-8">SECOND LOOK</h1>
