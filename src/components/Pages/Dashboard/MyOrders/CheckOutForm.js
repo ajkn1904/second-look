@@ -12,7 +12,7 @@ const CheckOutForm = ({ data }) => {
     const [processing, setProcessing] = useState(false)
     const [clientSecret, setClientSecret] = useState('');
 
-    const { _id, price, userName, userEmail } = data;
+    const { _id, price, userName, userEmail, itemId } = data;
 
 
     useEffect(() => {
@@ -83,7 +83,8 @@ const CheckOutForm = ({ data }) => {
                 price,
                 transactionId: paymentIntent.id,
                 userEmail,
-                orderId: _id
+                orderId: _id,
+                itemId
             }
 
             fetch('http://localhost:5000/payments', {

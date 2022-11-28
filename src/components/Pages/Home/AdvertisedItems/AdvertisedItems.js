@@ -8,15 +8,20 @@ const AdvertisedItems = ({ data }) => {
             <div className="carousel carousel-center w-8/12 mx-auto p-8 space-x-12 bg-gray-600 rounded-box border-4 border-yellow-500">
 
                 {
-                    data.map(item =>
+                    data.map(item => 
+                        <>
+                        {item.advertise === true &&
+
                         <div key={item._id} className="carousel-item">
                             <div className="indicator">
                                 <span className="indicator-item indicator-top indicator-end badge badge-warning font-semibold italic p-4 text-xl">${item.resalePrice}</span>
                                 <img src={item.image} className="rounded-box" alt="" style={{ height: '400px', width: '260px' }} />
                             </div>
-                            
-                            
+
+
                         </div>
+                    }
+                    </>
                     )
                 }
 

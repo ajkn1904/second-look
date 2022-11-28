@@ -39,6 +39,9 @@ const ProductsCard = ({ item, handleBooking, refetch }) => {
 
 
     return (
+        <>
+        {item.status !== 'sold' &&
+
         <div className="card w-[80%] mx-auto bg-base-100 md:card-side lg:card-side shadow-xl" key={item._id}>
             <figure><img src={item.image} alt="book" className='w-60 h-full' /></figure>
             <div className="card-body md:w-5/12 lg:w-8/12">
@@ -74,7 +77,8 @@ const ProductsCard = ({ item, handleBooking, refetch }) => {
                 </div>
             </div>
         </div>
-
+}
+        </>
     );
 };
 

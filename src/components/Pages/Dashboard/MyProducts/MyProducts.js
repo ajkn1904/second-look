@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
-import { toast, Toaster } from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import LoadingSpinner from '../../../Shared/LoadingSpinner/LoadingSpinner';
 
@@ -119,7 +119,7 @@ const MyProducts = () => {
                         }
                     </tbody>
                 </table>
-                <Toaster></Toaster>
+               
             </div>
 
 

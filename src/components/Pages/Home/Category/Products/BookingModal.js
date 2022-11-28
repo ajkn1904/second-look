@@ -29,12 +29,13 @@ const BookingModal = ({ booking, setBooking, refetch }) => {
         const price = form.price.value
 
         const itemName = bookingData.name;
+        const itemId = booking
         const img = bookingData.image;
 
 
 
         const order = {
-            userName, userEmail, userPhoneNumber, userLocation, itemName, img, price
+            userName, userEmail, userPhoneNumber, userLocation, itemName, itemId, img, price
         }
 
         //console.log(order)

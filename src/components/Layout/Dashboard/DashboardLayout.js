@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Toaster } from 'react-hot-toast';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import useAdmin from '../../Hooks/useAdmin/useAdmin';
@@ -23,7 +24,7 @@ const DashboardLayout = () => {
                 <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content  bg-gray-50">
 
-
+                    <Toaster></Toaster>
                     <Outlet></Outlet>
 
 

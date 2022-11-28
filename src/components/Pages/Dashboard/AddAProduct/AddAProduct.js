@@ -196,7 +196,7 @@ const AddAProduct = () => {
                     </form>
                     
                 </div>
-                <Toaster></Toaster>
+                
 
             </div>
 

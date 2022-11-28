@@ -61,7 +61,8 @@ const AuthProvider = ({children}) => {
         continueWithProvider,
         userProfileUpdate,
         userLogout,
-        loading
+        loading,
+        setLoading
 
     }
     return (

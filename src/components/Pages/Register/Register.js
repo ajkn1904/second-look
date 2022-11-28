@@ -10,7 +10,7 @@ import LoadingSpinner from '../../Shared/LoadingSpinner/LoadingSpinner';
 const Register = () => {
 
     const { createUser, continueWithProvider,
-        userProfileUpdate, loading } = useContext(AuthContext);
+        userProfileUpdate, loading, setLoading } = useContext(AuthContext);
     const { register, formState: { errors }, handleSubmit } = useForm()
     const [registerError, setRegisterError] = useState('')
 
@@ -21,6 +21,7 @@ const Register = () => {
 
     useEffect(() => {
         if (token) {
+            setLoading(false)
             navigate('/')
         }
     },[token, navigate])
