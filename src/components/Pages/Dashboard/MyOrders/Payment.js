@@ -12,7 +12,7 @@ const Payment = () => {
     const { id } = useParams()
 
 
-    const { data = [], isLoading, refetch } = useQuery({
+    const { data = [], isLoading } = useQuery({
         queryKey: ['orders', id],
         queryFn: async () => {
             const res = await fetch(`https://second-look-server.vercel.app/orders/${id}`)
@@ -32,7 +32,7 @@ const Payment = () => {
             <p className='text-center'>Please pay <strong>${data.price}</strong></p>
 
 
-            <div className='w-96 my-8'>
+            <div className='w-96 my-24 mx-auto border-2 border-info rounded-xl p-5'>
                 <Elements stripe={stripePromise}>
                     <CheckOutForm
                         data={data} />
