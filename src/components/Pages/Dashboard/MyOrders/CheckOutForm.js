@@ -8,8 +8,10 @@ const CheckOutForm = ({ data }) => {
     const [cardError, setCardError] = useState('')
     const [success, setSuccess] = useState('')
     const [transactionId, setTransactionId] = useState('')
+    const [processing, setProcessing] = useState(false)
     const [clientSecret, setClientSecret] = useState('');
-    const { price, userName, userEmail } = data;
+
+    const { _id, price, userName, userEmail } = data;
 
 
     useEffect(() => {
@@ -42,6 +44,7 @@ const CheckOutForm = ({ data }) => {
         }
 
         setSuccess('')
+        setProcessing(true)
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: 'card',
             card,
@@ -74,9 +77,33 @@ const CheckOutForm = ({ data }) => {
             return
         }
         if (paymentIntent.status === 'succeeded') {
-            setSuccess('Congrats! Payment Done');
-            setTransactionId(paymentIntent.id)
+
+            const payment = {
+                price,
+                transactionId: paymentIntent.id,
+                userEmail,
+                orderId: _id
+            }
+
+            fetch('http://localhost:5000/payments', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                },
+                body: JSON.stringify(payment)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.insertedId) {
+                        setSuccess('Congrats! Payment Done');
+                        setTransactionId(paymentIntent.id);
+
+                    }
+                })
         }
+        setProcessing(false)
         console.log('paymentIntent', paymentIntent)
     };
 
@@ -100,7 +127,7 @@ const CheckOutForm = ({ data }) => {
                         },
                     }}
                 />
-                <button type="submit" className='btn btn-primary btn-sm my-5' disabled={!stripe || !clientSecret}>
+                <button type="submit" className='btn btn-primary btn-sm my-5' disabled={!stripe || !clientSecret || processing}>
                     Pay
                 </button>
             </form>

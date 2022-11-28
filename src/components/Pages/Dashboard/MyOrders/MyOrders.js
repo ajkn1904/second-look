@@ -63,12 +63,12 @@ const MyOrders = () => {
                                     {
                                         (order.price && order.paid !== true) &&
                                         <Link to={`/dashboard/payment/${order._id}`}>
-                                        <button className='btn btn-primary'>Pay</button>
+                                        <button className='btn btn-primary btn-sm'>Pay</button>
                                         </Link>
                                     }
                                     {
                                         (order.price && order.paid === true) &&
-                                        <button className='btn btn-success' disabled>Paid</button>
+                                        <label className='badge badge-success font-bold p-3' disabled>Paid</label>
                                     }
                                 </td>
                             </tr>

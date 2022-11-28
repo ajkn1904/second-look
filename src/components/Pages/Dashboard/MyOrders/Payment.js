@@ -12,7 +12,7 @@ const Payment = () => {
     const { id } = useParams()
 
 
-    const { data = [], isLoading } = useQuery({
+    const { data = [], isLoading, refetch } = useQuery({
         queryKey: ['orders', id],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/orders/${id}`)
@@ -34,8 +34,8 @@ const Payment = () => {
 
             <div className='w-96 my-8'>
                 <Elements stripe={stripePromise}>
-                    <CheckOutForm 
-                    data={data}/>
+                    <CheckOutForm
+                        data={data} />
                 </Elements>
             </div>
 
