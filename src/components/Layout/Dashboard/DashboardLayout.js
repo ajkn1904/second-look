@@ -33,6 +33,8 @@ const DashboardLayout = () => {
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 text-base-content">
 
+                        {/* conditional rendering */}
+                        
                         {isBuyer &&
                             <li><Link to="/dashboard/myOrders">MY ORDERS</Link></li>
                         }

@@ -21,7 +21,7 @@ const AllSellers = () => {
             .catch(error => console.log(error));
     }
 
-
+    //deleting users from database
     const handleDelete = (id) => {
         const doDelete = window.confirm('Do you want to delete this seller?');
         if (doDelete) {

@@ -18,7 +18,7 @@ const AllBuyers = () => {
     }, [reFetch]);
 
 
-
+    //deleting users from database
     const handleDelete = (id) => {
         const doDelete = window.confirm('Do you want to delete this buyer?');
         if (doDelete) {

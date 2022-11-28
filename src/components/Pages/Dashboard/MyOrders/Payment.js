@@ -11,7 +11,7 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK)
 const Payment = () => {
     const { id } = useParams()
 
-
+    //loading orders data
     const { data = [], isLoading } = useQuery({
         queryKey: ['orders', id],
         queryFn: async () => {
@@ -20,11 +20,13 @@ const Payment = () => {
             return data
         }
     })
-    console.log(data)
+    //console.log(data)
 
     if (isLoading) {
         return <LoadingSpinner></LoadingSpinner>
     }
+
+    
     return (
         <div>
             <h2 className='text-2xl my-4 font-bold text-center'>Payment for “{data.itemName

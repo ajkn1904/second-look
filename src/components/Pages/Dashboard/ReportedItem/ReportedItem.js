@@ -5,6 +5,7 @@ import LoadingSpinner from '../../../Shared/LoadingSpinner/LoadingSpinner';
 
 const ReportedItem = () => {
 
+    //deleting reported item from database
     const handleDelete = id => {
         console.log(id)
         const doDelete = window.confirm('Do you want to delete this product?');
@@ -26,7 +27,7 @@ const ReportedItem = () => {
         }
     }
 
-
+    //declining report
     const handleReportDecline = id => {
         fetch(`https://second-look-server.vercel.app/admin/product/${id}`, {
             method: 'PUT',
@@ -43,7 +44,7 @@ const ReportedItem = () => {
                 }
 
             })
-    
+
     }
 
 

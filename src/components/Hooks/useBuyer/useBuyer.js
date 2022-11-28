@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
+// hook for checking if the user is buyer
 const useBuyer = (email) => {
 
     const [isBuyer, setIsBuyer] = useState(false)

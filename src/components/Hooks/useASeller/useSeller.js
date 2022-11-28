@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+// hook for checking if the user is seller
 const useSeller = (email) => {
     const [isSeller, setIsSeller] = useState(false)
     const [isSellerLoading, setIsSellerLoading] = useState(true)

@@ -7,7 +7,7 @@ import LoadingSpinner from '../../../Shared/LoadingSpinner/LoadingSpinner';
 const MyProducts = () => {
     const { user, loading } = useContext(AuthContext)
 
-
+    //deleting products data from database
     const handleDelete = (id) => {
         const doDelete = window.confirm('Do you want to delete this product?');
         if (doDelete) {
@@ -28,7 +28,7 @@ const MyProducts = () => {
         }
     }
 
-
+    //advertisement handler 
     const handleAdvertise = id => {
         fetch(`https://second-look-server.vercel.app/seller/products/${id}`, {
             method: 'PUT',
@@ -104,7 +104,7 @@ const MyProducts = () => {
                                 <td>
                                     {(item.status === 'available') &&
                                         <button className='btn btn-warning btn-sm' onClick={() => handleAdvertise(item._id)}>
-                                            {(item?.advertise !== true) ? 
+                                            {(item?.advertise !== true) ?
                                                 'Advertise'
                                                 :
                                                 'Advertising'
@@ -119,7 +119,7 @@ const MyProducts = () => {
                         }
                     </tbody>
                 </table>
-               
+
             </div>
 
 

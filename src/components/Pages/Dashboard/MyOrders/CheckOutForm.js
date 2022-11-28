@@ -30,7 +30,7 @@ const CheckOutForm = ({ data }) => {
     }, [price]);
 
 
-
+    //implementing payment get way
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -86,7 +86,7 @@ const CheckOutForm = ({ data }) => {
                 orderId: _id,
                 itemId
             }
-
+            //storing payment data to database
             fetch('https://second-look-server.vercel.app/payments', {
                 method: 'POST',
                 headers: {

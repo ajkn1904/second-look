@@ -1,6 +1,6 @@
-
 import { useEffect, useState } from "react";
 
+//hook for jwt token
 const useToken = email => {
     const [token, setToken] = useState('');
     useEffect(() => {

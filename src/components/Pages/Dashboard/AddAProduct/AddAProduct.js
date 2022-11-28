@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { toast, Toaster } from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import LoadingSpinner from '../../../Shared/LoadingSpinner/LoadingSpinner';
@@ -16,6 +16,7 @@ const AddAProduct = () => {
     const imgHostingKey = process.env.REACT_APP_imgbb_key;
 
 
+    //loading data by using react query form
     const { data: category = [], isLoading } = useQuery({
         queryKey: ['category'],
         queryFn: async () => {
@@ -35,7 +36,7 @@ const AddAProduct = () => {
         const formData = new FormData()
         formData.append('image', image)
         const url = `https://api.imgbb.com/1/upload?&key=${imgHostingKey}`
-
+        //posting image to the online based server imgbb
         fetch(url, {
             method: 'POST',
             body: formData
@@ -43,7 +44,7 @@ const AddAProduct = () => {
             .then(res => res.json())
             .then(imgData => {
                 if (imgData.success) {
-                    //console.log(imgData.data.url)
+                    
 
                     const product = {
                         cat_id: data.cat_id,
@@ -62,7 +63,8 @@ const AddAProduct = () => {
                         purchaseYr: data.purchaseYr,
                         status: 'available',
                     }
-                    //console.log(product)
+                    
+                    //posting products data to database
                     fetch('https://second-look-server.vercel.app/product', {
                         method: 'POST',
                         headers: {

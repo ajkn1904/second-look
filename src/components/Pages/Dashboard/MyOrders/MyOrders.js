@@ -8,9 +8,9 @@ const MyOrders = () => {
 
     const { user, loading } = useContext(AuthContext)
 
+
+   //loading orders data from database 
     const url = `https://second-look-server.vercel.app/orders?email=${user?.email}`
-
-
     const { data = [], isLoading } = useQuery({
         queryKey: ['orders', user?.email],
         queryFn: async () => {
