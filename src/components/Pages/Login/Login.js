@@ -10,7 +10,7 @@ const Login = () => {
 
     const [loginError, setLoginError] = useState('');
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { userLogin, continueWithProvider, loading } = useContext(AuthContext);
+    const { userLogin, continueWithProvider, loading, setLoading} = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider()
     const location = useLocation()
     const navigate = useNavigate()
@@ -41,7 +41,11 @@ const Login = () => {
             setLoginUserEmail(data.email)
             
             })
-            .catch(error => setLoginError(error.message))
+            .catch(error => {
+                setLoginError(error.message)
+                setLoading(false)
+
+            })
     }
 
 
