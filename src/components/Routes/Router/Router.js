@@ -21,6 +21,7 @@ import BuyerRoute from '../BuyerRoute/BuyerRoute';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import SellerRoute from '../SellerRoute/SellerRoute';
 
+
 const router = createBrowserRouter([
     {
         path: '/',
@@ -60,7 +61,14 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/dashboard',
-                element: <p className='text-5xl font-bold text-info text-center my-[30vh]'>WELCOME TO DASHBOARD</p>
+                element: <>
+                    <p className='text-5xl font-bold text-info text-center mt-[30vh] mb-5'>WELCOME TO DASHBOARD</p>
+                    <div className='text-center'>
+                    <label htmlFor="dashboard-drawer" tabIndex={0} className="btn btn-sm bg-gradient-to-r from-primary to-secondary hover:from-blue-400 text-white lg:hidden">
+                        Dashboard Menu
+                    </label>
+                    </div>
+                </>
             },
             {
                 path: '/dashboard/myOrders',

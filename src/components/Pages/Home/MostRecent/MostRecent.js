@@ -26,7 +26,7 @@ const MostRecent = () => {
             {
                 data.map(recent =>
                     
-                    <div className="max-w-sm mx-auto bg-base-100 shadow-xl border-2" key={recent._id}>
+                    <div className="w-[70%] mx-auto bg-base-100 shadow-xl border-2" key={recent._id}>
                         <figure><img src={recent.image} alt="" className='w-[90%] h-[200px] mx-auto mt-4' /></figure>
                         <div className="card-body">
                             <h2 className="card-title">{recent.name}</h2>

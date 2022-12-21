@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const CategoryCard = ({item}) => {
     return (
-        <div className="card w-96 mx-auto shadow-xl bg-orange-100">
+        <div className="card w-[80%] mx-auto shadow-xl bg-orange-100">
             <div className="card-body">
                 <h2 className="card-title">{item.name}</h2>
                 <div className="card-actions justify-end">

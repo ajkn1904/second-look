@@ -23,10 +23,10 @@ const Home = () => {
 
     return (
         <div>
-            <section className="hero h-[400px]" style={{ backgroundImage: `url('https://i.ibb.co/yspT48x/shiromani-kant-mo3-FOTG62ao-unsplash.jpg')` }}>
+            <section className="hero h-[70vh] bg-cover" style={{ backgroundImage: `url('https://i.ibb.co/yspT48x/shiromani-kant-mo3-FOTG62ao-unsplash.jpg')` }}>
                 <div className="hero-overlay bg-opacity-70"></div>
                 <div className="hero-content text-center text-neutral-content">
-                    <div className="max-w-lg">
+                    <div className="w-[80%] mx-auto">
                         <h1 className="mb-5 text-5xl font-bold font-serif border-2 px-8">SECOND LOOK</h1>
                         <p className="mb-5 p-5 bg-gray-700">“Used books,” as if someone else has had the best of them and you get the sere husk, or the lees, as if a book isn’t the one thing, the one product, that is forever new. There’s no such thing as a used book. Or there’s no such thing as a book if it’s not being used.”</p>
 

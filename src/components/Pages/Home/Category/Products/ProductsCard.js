@@ -43,7 +43,7 @@ const ProductsCard = ({ item, handleBooking, refetch }) => {
         {item.status !== 'sold' &&
 
         <div className="card w-[80%] mx-auto bg-base-100 md:card-side lg:card-side shadow-xl" key={item._id}>
-            <figure><img src={item.image} alt="book" className='w-60 h-full' /></figure>
+            <figure><img src={item.image} alt="book" className='w-60 h-[370px] sm:h-[370px] md:h-full lg:h-full' /></figure>
             <div className="card-body md:w-5/12 lg:w-8/12">
                 <h2 className="card-title">{item.name}</h2>
                 <h3 className="text-lg badge p-3">{item.cat_name}</h3>
