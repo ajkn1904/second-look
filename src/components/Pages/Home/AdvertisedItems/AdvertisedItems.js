@@ -5,7 +5,7 @@ const AdvertisedItems = ({ data }) => {
     return (
         <div className='my-24'>
             <h2 className='text-3xl font-bold text-center my-16'>ADVERTISED ITEMS</h2>
-            <div className="carousel carousel-center w-9/12 mx-auto p-8 space-x-12 bg-gray-600 rounded-box border-4 border-yellow-500">
+            <div className="carousel carousel-center w-10/12 mx-auto p-8 space-x-12 bg-gray-600 rounded-box border-4 border-yellow-500">
 
                 {
                     data.map(item => 

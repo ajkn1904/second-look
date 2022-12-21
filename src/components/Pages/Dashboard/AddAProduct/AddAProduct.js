@@ -91,7 +91,7 @@ const AddAProduct = () => {
 
             <h1 className='text-2xl font-bold text-center mt-10 mb-4'>ADD A PRODUCT</h1>
             <div className='flex justify-center items-center mb-20 p-4'>
-                <div className='card shadow-xl w-8/12 bg-slate-100 p-7'>
+                <div className='card shadow-xl w-11/12 bg-slate-100 p-7'>
 
                     <form onSubmit={handleSubmit(handleAddProduct)}>
 

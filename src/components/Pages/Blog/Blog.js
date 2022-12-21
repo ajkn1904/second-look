@@ -6,7 +6,7 @@ const Blog = () => {
             <h2 className='text-3xl text-center font-semibold my-10'>READ OUR BLOG</h2>
 
 
-            <div className="collapse border-2 rounded-xl border-gray-400 my-10 w-8/12 mx-auto">
+            <div className="collapse border-2 rounded-xl border-gray-400 my-10 w-10/12 mx-auto">
                 <input type="checkbox" className="peer" />
                 <div className="collapse-title font-bold bg-green-50 peer-checked:bg-gray-200 peer-checked:text-black-content">
                     <p>
@@ -29,7 +29,7 @@ const Blog = () => {
 
 
 
-            <div className="collapse border-2 rounded-xl border-gray-400 my-10 w-8/12 mx-auto">
+            <div className="collapse border-2 rounded-xl border-gray-400 my-10 w-10/12 mx-auto">
                 <input type="checkbox" className="peer" />
                 <div className="collapse-title font-bold bg-green-50 peer-checked:bg-gray-200 peer-checked:text-black-content">
                     <p>
@@ -47,7 +47,7 @@ const Blog = () => {
 
 
 
-            <div className="collapse border-2 rounded-xl border-gray-400 my-10 w-8/12 mx-auto">
+            <div className="collapse border-2 rounded-xl border-gray-400 my-10 w-10/12 mx-auto">
                 <input type="checkbox" className="peer" />
                 <div className="collapse-title font-bold bg-green-50 peer-checked:bg-gray-200 peer-checked:text-black-content">
                     <p>
@@ -66,7 +66,7 @@ const Blog = () => {
 
 
 
-            <div className="collapse border-2 rounded-xl border-gray-400 my-10 w-8/12 mx-auto">
+            <div className="collapse border-2 rounded-xl border-gray-400 my-10 w-10/12 mx-auto">
                 <input type="checkbox" className="peer" />
                 <div className="collapse-title font-bold bg-green-50 peer-checked:bg-gray-200 peer-checked:text-black-content">
                     <p>
