@@ -139,7 +139,7 @@ const Register = () => {
                     <label>
                         <span className="label-text">Password</span>
                     </label>
-                    <input type="password" className="w-full my-3 input input-bordered"  {...register("password",
+                    <input type="password" placeholder='Password(6 Character) => Abcd#1' className="w-full my-3 input input-bordered"  {...register("password",
                         {
                             required: "Password is required",
                             minLength: { value: 6, message: 'Password must be at least 6 character long' },
@@ -156,7 +156,7 @@ const Register = () => {
                     <label>
                         <span className="label-text">Re-type Password</span>
                     </label>
-                    <input type="password" className="w-full my-3 input input-bordered"  {...register("confirmPassword",
+                    <input type="password" placeholder='Password(6 Character) => Abcd#1' className="w-full my-3 input input-bordered"  {...register("confirmPassword",
                         {
                             required: "Password is required",
                             minLength: { value: 6, message: 'Password must be at least 6 character long' }
