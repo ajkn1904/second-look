@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
 import { useContext, useState } from 'react';
-import { Toaster } from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
 import { AuthContext } from '../../../../Contexts/AuthProvider';
 import LoadingSpinner from '../../../../Shared/LoadingSpinner/LoadingSpinner';

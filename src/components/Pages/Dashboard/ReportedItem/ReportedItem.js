@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import { toast, Toaster } from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 import LoadingSpinner from '../../../Shared/LoadingSpinner/LoadingSpinner';
 
 const ReportedItem = () => {
