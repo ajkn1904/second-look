@@ -106,7 +106,7 @@ const ReportedItem = () => {
                     </tbody>
                 </table>
             </div>
-            <Toaster></Toaster>
+            
         </div>
     );
 };

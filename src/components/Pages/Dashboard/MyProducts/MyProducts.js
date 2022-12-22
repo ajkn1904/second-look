@@ -100,7 +100,7 @@ const MyProducts = () => {
                                 <td className='w-3'>{item.name}</td>
                                 <td>${item.originalPrice}</td>
                                 <td>${item.resalePrice}</td>
-                                <td className='font-semibold uppercase bg-green-100'>{item.status}</td>
+                                <td className={`font-semibold text-center uppercase ${item.status === 'sold' ? 'bg-red-100' : 'bg-green-100'}`}>{item.status}</td>
                                 <td>
                                     {(item.status === 'available') &&
                                         <button className='btn btn-warning btn-sm' onClick={() => handleAdvertise(item._id)}>

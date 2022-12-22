@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +14,7 @@ const AddAProduct = () => {
     const { register, formState: { errors }, handleSubmit } = useForm()
     const navigate = useNavigate()
     const imgHostingKey = process.env.REACT_APP_imgbb_key;
+    const [processing, setProcessing] = useState(false)
 
 
     //loading data by using react query form
@@ -31,7 +32,7 @@ const AddAProduct = () => {
     }
 
     const handleAddProduct = (data) => {
-
+        setProcessing(true)
         const image = data.image[0]
         const formData = new FormData()
         formData.append('image', image)
@@ -77,6 +78,7 @@ const AddAProduct = () => {
                         .then(data => {
                             console.log(data)
                             toast.success('Your product added Successfully')
+                            setProcessing(false)
                             navigate('/dashboard/myProducts')
                         })
                 }
@@ -189,7 +191,7 @@ const AddAProduct = () => {
 
                         <div className="flex flex-col w-full border-opacity-50">
 
-                            <button className="w-full my-3 btn text-white" type="submit">Add Product</button>
+                            <button className="w-full my-3 btn text-white" type="submit" disabled={processing}>{processing ? 'Processing' : 'Add Product'}</button>
 
 
 

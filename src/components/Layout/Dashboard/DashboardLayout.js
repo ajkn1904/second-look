@@ -22,7 +22,7 @@ const DashboardLayout = () => {
         <div>
             <div className='flex items-center gap-3'>
                 <Navbar></Navbar>
-                <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden mx-2">
+                <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
                     <MdSpaceDashboard className='w-5 h-5'/>
                 </label>
             </div>

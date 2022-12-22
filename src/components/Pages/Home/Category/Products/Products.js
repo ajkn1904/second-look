@@ -40,7 +40,7 @@ const Products = () => {
             { booking &&
                 <BookingModal setBooking={setBooking} refetch={refetch} booking={booking}></BookingModal>
             }
-            <Toaster></Toaster>
+           
         </div>
     );
 };

@@ -100,7 +100,7 @@ const AllSellers = () => {
                     </tbody>
                 </table>
             </div>
-            <Toaster></Toaster>
+            
         </div>
     );
 

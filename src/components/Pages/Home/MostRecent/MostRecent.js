@@ -33,7 +33,6 @@ const MostRecent = () => {
                             <p>{recent.description.slice(0,150)+'...'} 
                             <Link to={`/category/${recent.cat_id}`} className='text-primary'>Visit to buy</Link>
                             </p>
-                            
                         </div>
                     </div>
                 )
