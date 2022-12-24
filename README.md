@@ -1,11 +1,13 @@
 # Second Look
 This is a full-stack e-commerce website to resale used books.
 
-Visit the live site: [Live Website](https://second-look-1e813.web.app).
+Visit the live site: [Live Website](https://second-look-1e813.firebaseapp.com/).
 
 ## Credentials
-adminEmail: **admin@gmail.com**
-adminPassword: **Admin@12**
+* adminEmail: **admin@gmail.com**
+* adminPassword: **Admin@12**
+
+
 
 ## Features and Functionalities
 * Category wise products
