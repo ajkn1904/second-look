@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { AuthContext } from '../../../../Contexts/AuthProvider';
+import { Link } from 'react-router-dom';
 
 
 const BookingModal = ({ booking, setBooking, refetch }) => {
@@ -73,15 +74,19 @@ const BookingModal = ({ booking, setBooking, refetch }) => {
 
                     <form onSubmit={handleSubmit} className='flex flex-col justify-center gap-5 my-10'>
 
-                        <input type="text" name='userName' placeholder="Name" value={user.displayName} className="input input-bordered w-full" disabled />
+                        <input type="text" name='userName' placeholder="Name" value={user?.displayName} className="input input-bordered w-full" disabled />
 
-                        <input type="text" name='userEmail' defaultValue={user.email} placeholder="Email" className="input input-bordered w-full" disabled />
-                        <input type="text" name='price' defaultValue={ bookingData.resalePrice} placeholder="Price" className="input input-bordered w-full" disabled />
+                        <input type="text" name='userEmail' defaultValue={user?.email} placeholder="Email" className="input input-bordered w-full" disabled />
+                        <input type="text" name='price' defaultValue={bookingData.resalePrice} placeholder="Price" className="input input-bordered w-full" disabled />
                         <input type="text" name='userPhoneNumber' placeholder="Phone Number" className="input input-bordered w-full" required />
                         <input type="text" name='userLocation' placeholder="Your Location" className="input input-bordered w-full" required />
 
-
-                        <input type="submit" className="btn btn-primary text-white" />
+                        {
+                            user?.uid ?
+                                <input type="submit" className="btn btn-primary text-white" />
+                                :
+                                <p className='text-center text-xl'><Link to='/login' className='text-blue-600 font-semibold'>Login</Link> to order. </p>
+                        }
 
                     </form>
 
